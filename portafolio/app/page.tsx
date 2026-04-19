@@ -2,6 +2,7 @@ import Image from "next/image";
 import HeaderModule from "./Components/Header/Header";
 import HeroModule from "./Components/Hero/Hero"
 import InterestModule from "./Components/Intereses/intereses"
+import CVModule from "./Components/CV/cv"
 
 export default function Home() {
   return (
@@ -9,6 +10,7 @@ export default function Home() {
     <HeaderModule />
     <HeroModule />
     <InterestModule />
+    <CVModule />
     </>
   );
 }
