@@ -34,22 +34,22 @@
     /* Colores principales */
     /* ERROR 1: El color primario no es el correcto, debería ser un cyan vibrante
        PISTA: Revisa el valor hexadecimal, el original era un tono cyan (#0ea5e9) */
-    --color-primary: #ff0000;          /* Cyan vibrante */
-    --color-primary-dark: #0284c7;
-    --color-primary-light: #38bdf8;
-    --color-secondary: #8b5cf6;         /* Violeta eléctrico */
-    --color-secondary-dark: #7c3aed;
+    --color-primary: #9333ea;          /* Morado vibrante */
+    --color-primary-dark: #7e22ce;
+    --color-primary-light: #c084fc;
+    --color-secondary: #d946ef;         /* Fucsia/Morado claro */
+    --color-secondary-dark: #c026d3;
     
     /* Colores de fondo */
-    --color-bg-primary: #0f172a;        /* Azul medianoche */
-    --color-bg-secondary: #1e293b;      /* Gris pizarra oscuro */
-    --color-bg-tertiary: #334155;       /* Gris pizarra */
-    --color-bg-card: #1e293b;
+    --color-bg-primary: #150e1f;        /* Morado muy oscuro (casi negro) */
+    --color-bg-secondary: #221533;      /* Morado oscuro */
+    --color-bg-tertiary: #35224d;       /* Morado medio oscuro */
+    --color-bg-card: #221533;
     
     /* Colores de texto */
-    --color-text-primary: #f8fafc;
-    --color-text-secondary: #94a3b8;
-    --color-text-muted: #64748b;
+    --color-text-primary: #fdf4ff;
+    --color-text-secondary: #e9d5ff;
+    --color-text-muted: #a892c2;
     
     /* Gradientes */
     --gradient-primary: linear-gradient(135deg, var(--color-primary) 0%, var(--color-secondary) 100%);
@@ -60,8 +60,8 @@
     --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1);
     --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.1);
     --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
-    --shadow-glow: 0 0 20px rgba(14, 165, 233, 0.3);
-    --shadow-glow-secondary: 0 0 20px rgba(139, 92, 246, 0.3);
+    --shadow-glow: 0 0 20px rgba(147, 51, 234, 0.3);
+    --shadow-glow-secondary: 0 0 20px rgba(217, 70, 239, 0.3);
     
     /* Tipografía */
     --font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
@@ -102,7 +102,7 @@
     /* Z-index */
     /* ERROR 2: El header queda detrás del contenido al hacer scroll
        PISTA: El valor del z-index es muy bajo para un elemento fijo */
-    --z-fixed: 1;
+    --z-fixed: 100;
     --z-modal: 1000;
     
     /* Header */
@@ -162,6 +162,7 @@ button {
     max-width: 1200px;
     /* ERROR 3: El contenido no está centrado en la página
        PISTA: Falta una propiedad que centra elementos de bloque horizontalmente */
+    margin: 0 auto;
     padding: 0 var(--spacing-lg);
 }
 
@@ -214,6 +215,7 @@ button {
        SOLUCIÓN: Falta la propiedad transition para animar los cambios de estado
        Agregar: transition: all var(--transition-base);
        Esto hace que el hover y otros estados se animen suavemente */
+    transition: all var(--transition-base);
     cursor: pointer;
     white-space: nowrap;
 }
@@ -224,11 +226,12 @@ button {
     border: none;
     /* ERROR 5: El botón primario no tiene profundidad ni efecto de brillo
        PISTA: Falta la propiedad que agrega sombras al elemento */
+    box-shadow: var(--shadow-md), var(--shadow-glow);
 }
 
 .btn--primary:hover {
     transform: translateY(-2px);
-    box-shadow: var(--shadow-xl), 0 0 30px rgba(14, 165, 233, 0.4);
+    box-shadow: var(--shadow-xl), 0 0 30px rgba(147, 51, 234, 0.4);
 }
 
 .btn--outline {
@@ -240,7 +243,7 @@ button {
 .btn--outline:hover {
     border-color: var(--color-primary);
     color: var(--color-primary);
-    background: rgba(14, 165, 233, 0.1);
+    background: rgba(147, 51, 234, 0.1);
 }
 
 .btn--secondary {
@@ -270,7 +273,7 @@ button {
     left: 0;
     width: 100%;
     height: var(--header-height);
-    background: rgba(15, 23, 42, 0.95);
+    background: rgba(21, 14, 31, 0.95);
     backdrop-filter: blur(10px);
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
     z-index: var(--z-fixed);
@@ -281,6 +284,7 @@ button {
     display: flex;
     /* ERROR 6: Los elementos del nav no están alineados verticalmente al centro
        PISTA: Falta una propiedad de flexbox que alinea items en el eje transversal */
+    align-items: center;
     justify-content: space-between;
     height: 100%;
 }
@@ -326,6 +330,7 @@ button {
        SOLUCIÓN: Falta la transición para la propiedad width
        Agregar: transition: width var(--transition-base);
        Esto hace que la línea se expanda suavemente al hacer hover */
+    transition: width var(--transition-base);
 }
 
 .nav__link:hover,
@@ -374,8 +379,8 @@ button {
     right: 0;
     bottom: 0;
     background: 
-        radial-gradient(circle at 20% 80%, rgba(14, 165, 233, 0.1) 0%, transparent 50%),
-        radial-gradient(circle at 80% 20%, rgba(139, 92, 246, 0.1) 0%, transparent 50%);
+        radial-gradient(circle at 20% 80%, rgba(147, 51, 234, 0.1) 0%, transparent 50%),
+        radial-gradient(circle at 80% 20%, rgba(217, 70, 239, 0.1) 0%, transparent 50%);
     pointer-events: none;
 }
 
@@ -428,6 +433,7 @@ button {
     display: flex;
     /* ERROR 8: Los botones del hero están pegados sin espacio entre ellos
        PISTA: Falta la propiedad que define el espacio entre elementos flex */
+    gap: var(--spacing-md);
     flex-wrap: wrap;
 }
 
@@ -448,6 +454,7 @@ button {
     justify-content: center;
     /* ERROR 9: El blob en el hero no tiene la animación de forma dinámica
        PISTA: Falta la propiedad animation que referencia a blob-animation */
+    animation: blob-animation 8s ease-in-out infinite;
     position: relative;
 }
 
@@ -548,6 +555,7 @@ button {
     display: grid;
     /* ERROR 10: Las cards de intereses no se muestran en 3 columnas, están apiladas
        PISTA: Falta la propiedad de CSS Grid que define las columnas */
+    grid-template-columns: repeat(3, 1fr);
     gap: var(--spacing-xl);
     margin-bottom: var(--spacing-3xl);
 }
@@ -557,6 +565,7 @@ button {
     border: 1px solid var(--color-bg-tertiary);
     /* ERROR 11: Las cards de intereses tienen esquinas puntiagudas en vez de redondeadas
        PISTA: Falta la propiedad border-radius */
+    border-radius: var(--border-radius-xl);
     padding: var(--spacing-xl);
     transition: all var(--transition-base);
     position: relative;
@@ -576,6 +585,7 @@ button {
        SOLUCIÓN: Falta la transición para la propiedad transform
        Agregar: transition: transform var(--transition-base);
        El pseudoelemento ::before necesita su propia transición para animar el scaleX */
+    transition: transform var(--transition-base);
 }
 
 .interest__card:hover {
@@ -591,7 +601,7 @@ button {
 .card__icon {
     width: 60px;
     height: 60px;
-    background: rgba(14, 165, 233, 0.1);
+    background: rgba(147, 51, 234, 0.1);
     border-radius: var(--border-radius-lg);
     display: flex;
     align-items: center;
@@ -632,7 +642,7 @@ button {
     font-size: var(--font-size-xs);
     font-weight: 500;
     color: var(--color-primary);
-    background: rgba(14, 165, 233, 0.1);
+    background: rgba(147, 51, 234, 0.1);
     padding: var(--spacing-xs) var(--spacing-sm);
     border-radius: var(--border-radius-full);
 }
@@ -698,8 +708,8 @@ button {
     right: 0;
     bottom: 0;
     background: 
-        radial-gradient(circle at 0% 50%, rgba(139, 92, 246, 0.1) 0%, transparent 50%),
-        radial-gradient(circle at 100% 50%, rgba(14, 165, 233, 0.1) 0%, transparent 50%);
+        radial-gradient(circle at 0% 50%, rgba(217, 70, 239, 0.1) 0%, transparent 50%),
+        radial-gradient(circle at 100% 50%, rgba(147, 51, 234, 0.1) 0%, transparent 50%);
     pointer-events: none;
 }
 
@@ -776,10 +786,11 @@ button {
    Los selectores específicos como --github necesitan definir su propio color */
 .social__icon--github {
     background: rgba(255, 255, 255, 0.1);
+    color: var(--color-text-primary);
 }
 
 .social__icon--email {
-    background: rgba(14, 165, 233, 0.2);
+    background: rgba(147, 51, 234, 0.2);
     color: var(--color-primary);
 }
 
@@ -818,6 +829,7 @@ button {
     /* ERROR 14: Los proyectos no se muestran en columnas, solo apilados
        PISTA: Falta definir cómo se distribuyen las columnas en el grid */
     display: grid;
+    grid-template-columns: repeat(3, 1fr);
     gap: var(--spacing-xl);
 }
 
@@ -859,7 +871,7 @@ button {
     left: 0;
     right: 0;
     bottom: 0;
-    background: rgba(15, 23, 42, 0.9);
+    background: rgba(21, 14, 31, 0.9);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -872,7 +884,7 @@ button {
    SOLUCIÓN: El selector está mal escrito, debería ser .project__card:hover .project__overlay
    El selector correcto utiliza :hover en el contenedor padre para afectar al hijo
    Cambiar project__card-hover por .project__card:hover */
-.project__card-hover .project__overlay {
+.project__card:hover .project__overlay {
     opacity: 1;
 }
 
@@ -923,7 +935,7 @@ button {
     font-size: var(--font-size-xs);
     font-weight: 600;
     color: var(--color-secondary);
-    background: rgba(139, 92, 246, 0.1);
+    background: rgba(217, 70, 239, 0.1);
     padding: var(--spacing-xs) var(--spacing-sm);
     border-radius: var(--border-radius-sm);
 }
@@ -947,7 +959,7 @@ button {
     right: 0;
     bottom: 0;
     background: 
-        radial-gradient(circle at 50% 0%, rgba(14, 165, 233, 0.1) 0%, transparent 50%);
+        radial-gradient(circle at 50% 0%, rgba(147, 51, 234, 0.1) 0%, transparent 50%);
     pointer-events: none;
 }
 
@@ -982,7 +994,7 @@ button {
 .contact__icon {
     width: 50px;
     height: 50px;
-    background: rgba(14, 165, 233, 0.1);
+    background: rgba(147, 51, 234, 0.1);
     border-radius: var(--border-radius-md);
     display: flex;
     align-items: center;
@@ -1009,8 +1021,9 @@ button {
 }
 
 .contact__card {
-    /* ERROR 18: La card de contacto no tiene el fondo degradado
+    /* ERROR 15: La card de contacto no tiene el fondo degradado
        PISTA: Falta la propiedad background con el gradiente primario */
+    background: var(--gradient-primary);
     border-radius: var(--border-radius-xl);
     padding: var(--spacing-2xl);
     text-align: center;
@@ -1072,6 +1085,7 @@ button {
 .footer__social {
     /* ERROR 16: Los iconos de redes sociales del footer están apilados verticalmente
        PISTA: Falta la propiedad display que permite alinear elementos en fila */
+    display: flex;
     gap: var(--spacing-md);
 }
 
@@ -1081,6 +1095,7 @@ button {
     background: var(--color-bg-tertiary);
     /* ERROR 17: Los iconos de redes sociales son cuadrados en vez de círculos
        PISTA: Falta una propiedad de borde para hacer elementos circulares */
+    border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -1138,7 +1153,7 @@ button {
 
 .scroll-top:hover {
     transform: translateY(-5px);
-    box-shadow: var(--shadow-xl), 0 0 30px rgba(14, 165, 233, 0.5);
+    box-shadow: var(--shadow-xl), 0 0 30px rgba(147, 51, 234, 0.5);
 }
 
 /* ========== RESPONSIVE ========== */
