@@ -6,10 +6,10 @@ export default function Intereses(){
     return (
         <section className={`${styles.interests} section`} id="interests">
             <div className="container">
-                <div className={styles.section__header}>
-                    <span className={styles.section__subtitle}>Lo que me apasiona</span>
-                    <h2 className={styles.section__title}>Intereses & Especialidades</h2>
-                    <p className={styles.section__description}>
+                <div className="section__header">
+                    <span className="section__subtitle">&lt; Lo que me apasiona /&gt;</span>
+                    <h2 className="section__title">Intereses & Especialidades</h2>
+                    <p className="section__description">
                         Áreas tecnológicas que me entusiasman y en las que busco especializarme
                     </p>
                 </div>
